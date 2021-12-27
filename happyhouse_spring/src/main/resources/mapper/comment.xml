@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.mapper.CommentMapper">
+
+	<!-- qnano에 해당하는 댓글 조회 -->
+	<select id="list" resultType="commentDto">
+		select no, userId, comment, date, qnano
+		from qnacomment
+		where qnano = #{qnano}
+		order by date desc
+	</select>
+
+	<!-- 댓글 정보 등록 -->
+	<insert id="create" parameterType="commentDto">
+		insert into qnacomment(
+			no, userId, comment, date, qnano
+		) values (
+			#{no}, #{userId}, #{comment}, now(), #{qnano}
+		)
+	</insert>
+	
+	<!-- qna 답변수 +1 -->
+	<update id="plus" parameterType="int">
+		update qna
+		set anscount = anscount+1
+		where no = #{qnano}
+	</update>
+	
+	<!-- qna 답변수 -1 -->
+	<update id="minus" parameterType="int">
+		update qna
+		set anscount = anscount-1
+		where no = (select qnano from qnacomment where no=#{no})
+	</update>
+	
+	<!-- 댓글 정보 수정 -->
+	<update id="modify" parameterType="commentDto">
+		update qnacomment
+		set comment = #{comment}
+		where no = #{no}
+	</update>
+
+	<!-- qnano에 따른 댓글 정보 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete
+		from qnacomment
+		where no = #{no}
+	</delete>
+
+</mapper>
+

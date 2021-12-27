@@ -1,0 +1,302 @@
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:405px;margin:50px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index:2;font-size:14px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:5px;}
+#jjim_wrap {position:absolute;top:0;left:0;bottom:0;width:405px;margin:50px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index:2;font-size:14px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#jjim_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#jjim_wrap .option{text-align: center;}
+#jjim_wrap .option p {margin:10px 0;}  
+#jjim_wrap .option button {margin-left:5px;}
+#store_wrap {position:absolute;top:0;left:0;bottom:0;width:405px;margin:50px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index:2;font-size:14px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#store_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#store_wrap .option{text-align: center;}
+#store_wrap .option p {margin:10px 0;}  
+#store_wrap .option button {margin-left:5px;}
+#apt_wrap {position:absolute;top:0;right:0;bottom:0;width:405px;margin:50px 10px 30px 0px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index:2;font-size:14px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#apt_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#apt_wrap .option{text-align: center;}
+#apt_wrap .option p {margin:10px 0;}  
+#apt_wrap .option button {margin-right:5px;}
+#env_wrap {position:absolute;top:0;right:0;bottom:0;width:405px;margin:50px 10px 30px 0px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index:2;font-size:14px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#env_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#env_wrap .option{text-align: center;}
+#env_wrap .option p {margin:10px 0;}  
+#env_wrap .option button {margin-right:5px;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#env_placesList li {list-style: none;}
+#env_placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#env_placesList .item span {display: block;margin-top:4px;}
+#store_placesList li {list-style: none;}
+#store_placesList .store {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#store_placesList .store span {display: block;margin-top:4px;}
+#menu_wrap{
+  position:absolute;
+  left:-100%;                    //좌측에 위치 시키기 위해 현 가로폭의 -100%만큼 왼쪽으로 이동
+  top:0;                         //슬라이드 메뉴의 경우 화면에 꽉차게 해야 하는데
+  right:0;                       //모바일 웹은 화면의 높이가 일정하지 않을 일이 많아
+  bottom:0;                      //전,후,좌,우 전체 0을 주면 화면에 가득 차게 됩니다.
+  
+  -webkit-transition: left .3s;  //애니메이션 css 브라우저별로 작동시키기 위해 다 적어주는게 좋다
+  -moz-transition: left .3s;     //left 속성에 대해 0.3초 동안 애니메이션 실행
+  -ms-transition: left .3s;
+  -o-transition: left .3s;
+  transition: left .3s;
+}
+#env_wrap{
+  position:absolute;
+  left:-100%;                    //좌측에 위치 시키기 위해 현 가로폭의 -100%만큼 왼쪽으로 이동
+  top:0;                         //슬라이드 메뉴의 경우 화면에 꽉차게 해야 하는데
+  right:0;                       //모바일 웹은 화면의 높이가 일정하지 않을 일이 많아
+  bottom:0;                      //전,후,좌,우 전체 0을 주면 화면에 가득 차게 됩니다.
+  
+  -webkit-transition: left .3s;  //애니메이션 css 브라우저별로 작동시키기 위해 다 적어주는게 좋다
+  -moz-transition: left .3s;     //left 속성에 대해 0.3초 동안 애니메이션 실행
+  -ms-transition: left .3s;
+  -o-transition: left .3s;
+  transition: left .3s;
+}
+#store_wrap{
+  position:absolute;
+  left:-100%;                    //좌측에 위치 시키기 위해 현 가로폭의 -100%만큼 왼쪽으로 이동
+  top:0;                         //슬라이드 메뉴의 경우 화면에 꽉차게 해야 하는데
+  right:0;                       //모바일 웹은 화면의 높이가 일정하지 않을 일이 많아
+  bottom:0;                      //전,후,좌,우 전체 0을 주면 화면에 가득 차게 됩니다.
+  
+  -webkit-transition: left .3s;  //애니메이션 css 브라우저별로 작동시키기 위해 다 적어주는게 좋다
+  -moz-transition: left .3s;     //left 속성에 대해 0.3초 동안 애니메이션 실행
+  -ms-transition: left .3s;
+  -o-transition: left .3s;
+  transition: left .3s;
+}
+
+#jjim_wrap{
+  position:absolute;
+  left:-100%;                    //좌측에 위치 시키기 위해 현 가로폭의 -100%만큼 왼쪽으로 이동
+  top:0;                         //슬라이드 메뉴의 경우 화면에 꽉차게 해야 하는데
+  right:0;                       //모바일 웹은 화면의 높이가 일정하지 않을 일이 많아
+  bottom:0;                      //전,후,좌,우 전체 0을 주면 화면에 가득 차게 됩니다.
+  
+  -webkit-transition: left .3s;  //애니메이션 css 브라우저별로 작동시키기 위해 다 적어주는게 좋다
+  -moz-transition: left .3s;     //left 속성에 대해 0.3초 동안 애니메이션 실행
+  -ms-transition: left .3s;
+  -o-transition: left .3s;
+  transition: left .3s;
+}
+
+#apt_wrap{
+  position:absolute;
+  right:-100%;                    //좌측에 위치 시키기 위해 현 가로폭의 -100%만큼 왼쪽으로 이동
+  top:0;                         //슬라이드 메뉴의 경우 화면에 꽉차게 해야 하는데
+  left:0;                       //모바일 웹은 화면의 높이가 일정하지 않을 일이 많아
+  bottom:0;                      //전,후,좌,우 전체 0을 주면 화면에 가득 차게 됩니다.
+  
+  -webkit-transition: right .3s;  //애니메이션 css 브라우저별로 작동시키기 위해 다 적어주는게 좋다
+  -moz-transition: right .3s;     //left 속성에 대해 0.3초 동안 애니메이션 실행
+  -ms-transition: right .3s;
+  -o-transition: right .3s;
+  transition: right .3s;
+}
+
+#env_wrap.on{
+  left:0;
+}
+#apt_wrap.on{
+  right:0;
+}
+#menu_wrap.on{
+  left:0;
+}
+#store_wrap.on{
+  left:0;
+}
+
+#jjim_wrap.jjimon{
+  left:0;
+}
+#store_placesList .store h5, #placesList .store .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#store_placesList .store .info{padding:10px 0 10px 33px;}
+#store_placesList .info .gray {color:#8a8a8a;}
+#store_placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#store_placesList .info .tel {color:#009900;}
+#store_placesList .store .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 0px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#store_placesList .store .marker_1 {background-position: 0 -10px;}
+#store_placesList .store .marker_2 {background-position: 0 -56px;}
+#store_placesList .store .marker_3 {background-position: 0 -102px}
+#store_placesList .store .marker_4 {background-position: 0 -148px;}
+#store_placesList .store .marker_5 {background-position: 0 -194px;}
+#store_placesList .store .marker_6 {background-position: 0 -240px;}
+#store_placesList .store .marker_7 {background-position: 0 -286px;}
+#store_placesList .store .marker_8 {background-position: 0 -332px;}
+#store_placesList .store .marker_9 {background-position: 0 -378px;}
+#store_placesList .store .marker_10 {background-position: 0 -423px;}
+#store_placesList .store .marker_11 {background-position: 0 -470px;}
+#store_placesList .store .marker_12 {background-position: 0 -516px;}
+#store_placesList .store .marker_13 {background-position: 0 -562px;}
+#store_placesList .store .marker_14 {background-position: 0 -608px;}
+#store_placesList .store .marker_15 {background-position: 0 -654px;}
+#store_pagination {margin:10px auto;text-align: center;}
+#store_pagination a {display:inline-block;margin-right:10px;}
+#store_pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 33px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 0px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {background-position: 0 -10px;}
+#placesList .item .marker_2 {background-position: 0 -56px;}
+#placesList .item .marker_3 {background-position: 0 -102px}
+#placesList .item .marker_4 {background-position: 0 -148px;}
+#placesList .item .marker_5 {background-position: 0 -194px;}
+#placesList .item .marker_6 {background-position: 0 -240px;}
+#placesList .item .marker_7 {background-position: 0 -286px;}
+#placesList .item .marker_8 {background-position: 0 -332px;}
+#placesList .item .marker_9 {background-position: 0 -378px;}
+#placesList .item .marker_10 {background-position: 0 -423px;}
+#placesList .item .marker_11 {background-position: 0 -470px;}
+#placesList .item .marker_12 {background-position: 0 -516px;}
+#placesList .item .marker_13 {background-position: 0 -562px;}
+#placesList .item .marker_14 {background-position: 0 -608px;}
+#placesList .item .marker_15 {background-position: 0 -654px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+#env_placesList .item h5, #env_placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#env_placesList .item .info{padding:10px 0 10px 33px;}
+#env_placesList .info .gray {color:#8a8a8a;}
+#env_placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 0px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#env_placesList .item .marker_1 {background-position: 0 -10px;}
+#env_placesList .item .marker_2 {background-position: 0 -56px;}
+#env_placesList .item .marker_3 {background-position: 0 -102px}
+#env_placesList .item .marker_4 {background-position: 0 -148px;}
+#env_placesList .item .marker_5 {background-position: 0 -194px;}
+#env_placesList .item .marker_6 {background-position: 0 -240px;}
+#env_placesList .item .marker_7 {background-position: 0 -286px;}
+#env_placesList .item .marker_8 {background-position: 0 -332px;}
+#env_placesList .item .marker_9 {background-position: 0 -378px;}
+#env_placesList .item .marker_10 {background-position: 0 -423px;}
+#env_placesList .item .marker_11 {background-position: 0 -470px;}
+#env_placesList .item .marker_12 {background-position: 0 -516px;}
+#env_placesList .item .marker_13 {background-position: 0 -562px;}
+#env_placesList .item .marker_14 {background-position: 0 -608px;}
+#env_placesList .item .marker_15 {background-position: 0 -654px;}
+
+.overlaybox {
+  position: relative;
+  width: 270px;
+  height: 350px;
+  background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png') no-repeat;
+  padding: 15px 10px;
+}
+.overlaybox div,
+ul {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.overlaybox li {
+  list-style: none;
+}
+.overlaybox .boxtitle {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png') no-repeat right 19px
+    center;
+  margin-bottom: 8px;
+}
+.overlaybox .first {
+  position: relative;
+  width: 247px;
+  height: 136px;
+  margin-bottom: 8px;
+}
+.first .text {
+  color: #fff;
+  font-weight: bold;
+}
+.first .triangle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/triangle.png') no-repeat;
+  padding: 6px;
+  font-size: 18px;
+}
+.first .movietitle {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 7px 15px;
+  font-size: 14px;
+}
+.overlaybox .close {position: absolute;top: 5px;right: 7px;color: #888;width: 17px;height: 17px;}
+.overlaybox .close:hover {cursor: pointer;}
+.overlaybox ul {
+  width: 247px;
+}
+.overlaybox li {
+  position: relative;
+  margin-bottom: 2px;
+  background: #2b2d36;
+  padding: 5px 10px;
+  color: #aaabaf;
+  line-height: 1;
+}
+.overlaybox li span {
+  display: inline-block;
+}
+.overlaybox li .number {
+  font-size: 16px;
+  font-weight: bold;
+}
+.overlaybox li .title {
+  font-size: 13px;
+}
+.overlaybox li .last {
+  font-size: 12px;
+  margin-right: 15px;
+}
+.overlaybox ul .arrow {
+  position: absolute;
+  margin-top: 8px;
+  right: 25px;
+  width: 5px;
+  height: 3px;
+  background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/updown.png') no-repeat;
+}
+.overlaybox li .up {
+  background-position: 0 -40px;
+}
+.overlaybox li .down {
+  background-position: 0 -60px;
+}
+.overlaybox li .count {
+  position: absolute;
+  margin-top: 5px;
+  right: 15px;
+  font-size: 10px;
+}
+.overlaybox li:hover {
+  color: #fff;
+  background: #d24545;
+}
+.overlaybox li:hover .up {
+  background-position: 0 0px;
+}
+.overlaybox li:hover .down {
+  background-position: 0 -20px;
+}

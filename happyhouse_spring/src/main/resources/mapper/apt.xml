@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.HouseMapper">
+
+	<select id="getSido" resultType="sidoGugunCodeDto">
+		select left(sidoCode,2) sidoCode, sidoName
+		from sidocode
+		order by sidoCode
+	</select>
+	
+	<select id="getGugunInSido" parameterType="string" resultType="sidoGugunCodeDto">
+		select left(gugunCode,5) gugunCode, gugunName
+		from guguncode
+		where left(gugunCode,2) = #{sido}
+		order by gugunCode
+	</select>
+	
+	<select id="getDongInGugun" parameterType="string" resultType="houseInfoDto">
+		select distinct dongName, dongCode
+		from baseaddress
+		where left(dongCode, 5) = #{gugun}
+		order by dongName
+	</select>
+	
+	<select id="getAptInDong" parameterType="string" resultType="houseInfoDto">
+		select h.aptCode, h.aptName, h.buildyear, h.dongCode, h.dongName, h.jibun, h.lat, h.lng, si.sidoname, gu.gugunname,
+				(select dealAmount from housedeal where aptCode = h.aptCode and no = (select max(no) from housedeal where aptCode = h.aptCode)) recentPrice
+		from houseinfo h
+		left join sidocode si
+		on left(h.dongcode,2) = left(si.sidocode,2)
+		left join guguncode gu
+		on left(h.dongcode,5) = left(gu.guguncode,5)
+		where dongCode = #{dong} 
+		order by aptName
+	</select>
+	<select id="listJjim" parameterType="string" resultType="jjimDto">
+		select j.userId, j.dongNo, b.sidoName, b.gugunName, b.dongName, b.dongCode
+		from jjimdong j, baseaddress b
+		where j.dongNo = b.no
+		and j.userId = #{userId};
+	</select>
+	
+	
+	 <insert id="insertJjim" parameterType="hashmap">
+		insert into jjimdong (userId, dongNo)
+		values (#{userId}, (select no from baseaddress where dongcode = #{dongCode}));
+	</insert> 
+	
+ 	<delete id="deleteJjim" parameterType="jjimDto">
+		delete from jjimdong
+		where userId = #{userId}
+		and dongNo = (select no from baseaddress where dongCode = #{dongCode});
+	</delete> 
+	
+	<select id="getDealList" parameterType="hashmap" resultType="houseDealInfoDto">
+		SELECT i.*, h.no, h.aptCode, trim(h.dealAmount) as dealAmount, h.dealYear, h.dealMonth,h.dealDay,h.area,h.floor,h.type , concat(d.sidoName, " ", d.gugunName, " ", d.dongName, " ", i.jibun) as address
+		FROM housedeal h, houseinfo i, dongCode d 
+		where h.aptCode = i.aptCode and i.dongCode = d.dongCode and <![CDATA[i.lat >= #{lat1} and i.lat <= #{lat2} and i.lng >= #{lng1} and i.lng <= #{lng2} and cast(replace(trim(h.dealAmount),',','') as unsigned) >= #{stPrice} and cast(replace(trim(h.dealAmount),',','') as unsigned) <= #{endPrice}]]>
+		group by h.aptCode having min(dealAmount / area) limit 70000;
+	</select>
+	
+	<select id="getTrainList" parameterType="hashmap" resultType="trainDto">
+		SELECT
+		    name, (
+		      6371 * acos (
+		      cos ( radians(lat) )
+		      * cos( radians( #{lat} ) )
+		      * cos( radians( lng ) - radians(#{lng}) )
+		      + sin ( radians(#{lat}) )
+		      * sin( radians( lat ) ) 
+		    )
+		) AS distance , address
+		FROM station
+		<![CDATA[ HAVING distance < 0.8]]>
+		ORDER BY distance
+		LIMIT 0 , 1000;
+	</select>
+	<select id="getClinicList" parameterType="hashmap" resultType="clinicDto">
+		SELECT
+		    gigwanName AS name, (
+		      6371 * acos (
+		      cos ( radians(lat) )
+		      * cos( radians( #{lat} ) )
+		      * cos( radians( lng ) - radians(#{lng}) )
+		      + sin ( radians(#{lat}) )
+		      * sin( radians( lat ) ) 
+		    )
+		) AS distance , gigwanAddress AS address
+		FROM clinic
+		<![CDATA[ HAVING distance < 2]]>
+		ORDER BY distance
+		LIMIT 0 , 1000;
+	</select>
+	<select id="getBusList" parameterType="hashmap" resultType="busDto">
+		SELECT
+		    station AS name, (
+		      6371 * acos (
+		      cos ( radians(lat) )
+		      * cos( radians( #{lat} ) )
+		      * cos( radians( lng ) - radians(#{lng}) )
+		      + sin ( radians(#{lat}) )
+		      * sin( radians( lat ) ) 
+		    )
+		) AS distance
+		FROM bus
+		<![CDATA[ HAVING distance < 0.3]]>
+		ORDER BY distance
+		LIMIT 0 , 1000;
+	</select>
+	<select id="getStarbucksList" parameterType="hashmap" resultType="starbucksDto">
+		SELECT
+		    name, (
+		      6371 * acos (
+		      cos ( radians(lat) )
+		      * cos( radians( #{lat} ) )
+		      * cos( radians( lng ) - radians(#{lng}) )
+		      + sin ( radians(#{lat}) )
+		      * sin( radians( lat ) ) 
+		    )
+		) AS distance, address
+		FROM starbucks
+		<![CDATA[ HAVING distance < 0.8]]>
+		ORDER BY distance
+		LIMIT 0 , 1000;
+	</select>
+	<select id="getBikeList" parameterType="hashmap" resultType="bikeDto">
+		SELECT
+		    place AS name, (
+		      6371 * acos (
+		      cos ( radians(lat) )
+		      * cos( radians( #{lat} ) )
+		      * cos( radians( lng ) - radians(#{lng}) )
+		      + sin ( radians(#{lat}) )
+		      * sin( radians( lat ) ) 
+		    )
+		) AS distance, placedetail AS address
+		FROM bike
+		<![CDATA[ HAVING distance < 0.4]]>
+		ORDER BY distance
+		LIMIT 0 , 1000;
+	</select>
+</mapper>

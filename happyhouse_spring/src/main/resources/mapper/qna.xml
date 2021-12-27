@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.model.mapper.QnaMapper">
+
+	<insert id="writeArticle" parameterType="qnaDto">
+		insert into qna (userId, title, content, date)
+		values (#{userId}, #{title}, #{content}, now())
+	</insert>
+	
+	<select id="listArticle" parameterType="String" resultType="qnaDto">
+		select no, userId, title, content, date, anscount
+		from qna
+		<if test="userId !='admin'">
+			where userId=#{userId}
+		</if>
+		order by no desc
+	</select>
+	
+	<select id="getArticle" parameterType="int" resultType="qnaDto">
+		select no, userId, title, content, date
+		from qna
+		where no = #{no}
+	</select>
+	
+	<update id="modifyArticle" parameterType="qnaDto">
+		update qna
+		set title = #{title}, content = #{content}
+		where no = #{no}
+	</update>
+	
+	<delete id="deleteComment" parameterType="int">
+		delete from qnacomment
+		where no = #{no}
+	</delete>
+	
+	<delete id="deleteArticle" parameterType="int">
+		delete from qna
+		where no = #{no}
+	</delete>
+	
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select count(no)
+		from qna
+		<if test="word != null and word != ''">
+			<if test="key == 'title'">
+				where title like concat('%', #{word}, '%')
+			</if>
+			<if test="key != 'title'">
+				where ${key} = #{word}
+			</if>
+		</if>
+	</select>
+
+</mapper>
+
