@@ -1,7 +1,5 @@
 # HappyHouse
 
-# HappyHouse
-
 ### 주제 : 아파트 매물 검색 서비스
 
 ### 기술 스택 
